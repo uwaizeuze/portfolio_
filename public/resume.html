@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owais Ahmad — Resume (Software Engineer)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --accent: #0284c7;
+      --tag-bg: #f0f9ff;
+      --tag-text: #0369a1;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6;
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+    .resume-wrapper {
+      max-width: 850px;
+      margin: 0 auto;
+      background: var(--bg);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      padding: 48px;
+    }
+    .action-bar {
+      max-width: 850px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0284c7;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #0369a1;
+    }
+    .btn-secondary {
+      background: #fff;
+      color: #374151;
+      border: 1px solid #d1d5db;
+    }
+    .btn-secondary:hover {
+      background: #f9fafb;
+    }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+    .name-title h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+    .name-title .subtitle {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .contact-info a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+    section {
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+    }
+    .summary-text {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.6;
+    }
+    .item {
+      margin-bottom: 20px;
+    }
+    .item:last-child {
+      margin-bottom: 0;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .item-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .item-subtitle {
+      font-size: 13px;
+      color: #0284c7;
+      font-weight: 500;
+    }
+    .item-date {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748b;
+    }
+    .item-location {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+    ul.bullet-points {
+      list-style-type: disc;
+      padding-left: 20px;
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.55;
+    }
+    ul.bullet-points li {
+      margin-bottom: 5px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .skill-category {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .skill-category-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 11.5px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .resume-wrapper {
+        box-shadow: none;
+        padding: 24px;
+        max-width: 100%;
+      }
+      .action-bar {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-bar">
+    <a href="/" class="btn btn-secondary">← Back to Portfolio</a>
+    <button onclick="window.print()" class="btn">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+        <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+      </svg>
+      Print / Save as PDF
+    </button>
+  </div>
+
+  <div class="resume-wrapper">
+    <header>
+      <div class="name-title">
+        <h1>Owais Ahmad</h1>
+        <div class="subtitle">Software Engineer — React.js / Next.js / AI Systems</div>
+      </div>
+      <div class="contact-info">
+        <span>📍 Rainawari, Srinagar, India</span>
+        <span>📞 <a href="tel:+916006212896">+91 6006212896</a></span>
+        <span>✉️ <a href="mailto:owaisibnkhursheed@gmail.com">owaisibnkhursheed@gmail.com</a></span>
+        <span>🔗 <a href="https://linkedin.com/in/owais-ahmad-87093a225" target="_blank">linkedin.com/in/owais-ahmad-87093a225</a></span>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-title">Professional Summary</div>
+      <p class="summary-text">
+        Software Engineer with 4+ years of experience building scalable, user-focused web applications and intelligent AI interfaces using React.js, Next.js, TypeScript, Node.js, Express.js, and MongoDB. Proven expertise in engineering responsive web applications, secure enterprise authentication, CMS platforms, and integrating RAG pipelines and Agentic AI workflows.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-category-title">Frontend & Architecture</div>
+          <div class="skill-tags">
+            <span class="tag">React.js</span>
+            <span class="tag">Next.js (App Router)</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Redux Toolkit</span>
+            <span class="tag">Zustand</span>
+            <span class="tag">React Query</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">AI & Agentic Systems</div>
+          <div class="skill-tags">
+            <span class="tag">RAG Pipelines</span>
+            <span class="tag">Agentic Tool Calling</span>
+            <span class="tag">Vector DBs (Pinecone/Chroma)</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">OpenAI APIs</span>
+            <span class="tag">Prompt Engineering</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">Backend & Database</div>
+          <div class="skill-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">MongoDB / Mongoose</span>
+            <span class="tag">RESTful APIs</span>
+            <span class="tag">JWT Authentication</span>
+            <span class="tag">RBAC</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-title">Developer Tooling</div>
+          <div class="skill-tags">
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Chrome Extension API</span>
+            <span class="tag">Vite / Webpack</span>
+            <span class="tag">Postman</span>
+            <span class="tag">CI/CD Workflows</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Professional Experience</div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Software Engineer (React.js)</span> — <span class="item-subtitle">MobileFirst Applications – Fintegration</span>
+          </div>
+          <div class="item-date">Mar 2024 – Jun 2026</div>
+        </div>
+        <div class="item-location">Gujarat, India</div>
+        <ul class="bullet-points">
+          <li>Designed and built reusable React components used across multiple product modules, improving development speed and consistency.</li>
+          <li>Managed application state using Redux and Context API, reducing bugs related to data flow across components.</li>
+          <li>Integrated RESTful APIs to connect frontend interfaces with backend services, ensuring reliable data exchange.</li>
+          <li>Collaborated with designers to translate UI/UX designs into functional, responsive interfaces.</li>
+          <li>Wrote clean, maintainable, and scalable code following industry best practices; tested and debugged features across the development lifecycle.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Software Engineer (React.js)</span> — <span class="item-subtitle">Accubits Technologies Inc.</span>
+          </div>
+          <div class="item-date">Mar 2022 – Aug 2023</div>
+        </div>
+        <div class="item-location">Thiruvananthapuram, Kerala, India</div>
+        <ul class="bullet-points">
+          <li>Optimized React.js components to improve user experience and application performance.</li>
+          <li>Implemented state management solutions using Redux and Context API for complex, data-driven interfaces.</li>
+          <li>Built responsive, cross-browser-compatible interfaces and integrated third-party APIs reliably.</li>
+          <li>Collaborated within an agile team, contributing to code reviews and maintaining code quality standards.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Software Engineer Intern (Web Developer)</span> — <span class="item-subtitle">NIELIT</span>
+          </div>
+          <div class="item-date">Sep 2021 – Feb 2022</div>
+        </div>
+        <div class="item-location">Rangreth, Budgam, Kashmir, India</div>
+        <ul class="bullet-points">
+          <li>Developed responsive web applications using HTML, CSS, JavaScript, and React.js.</li>
+          <li>Enhanced application interactivity and collaborated with cross-functional teams on feature delivery.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Key Projects</div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">CERSAI — Central Registry Platform</span>
+          </div>
+          <div class="item-date">React.js, TypeScript, REST APIs, CMS, RBAC</div>
+        </div>
+        <ul class="bullet-points">
+          <li>Built responsive web interfaces with secure authentication, role-based authorization, and administrative portals.</li>
+          <li>Integrated RESTful APIs for high-volume securitisation reconstruction records.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Legacy Assurance — AI Document Automation</span>
+          </div>
+          <div class="item-date">React.js, TypeScript, Zustand, React Query, AI</div>
+        </div>
+        <ul class="bullet-points">
+          <li>Engineered dynamic document automation platform extracting placeholders from legal files and auto-generating variables.</li>
+          <li>Built AI campaign approval workflows streamlining multi-stakeholder legal operations.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">DeveloperBuddy — Chrome Extension</span>
+          </div>
+          <div class="item-date">React.js, TypeScript, Chrome Extension API</div>
+        </div>
+        <ul class="bullet-points">
+          <li>Published productivity extension on Chrome Web Store streamlining daily engineering tasks.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Education</div>
+      <div class="item">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Bachelor of Computer Applications (BCA)</span> — <span class="item-subtitle">Amar Singh College</span>
+          </div>
+          <div class="item-date">May 2018 – Aug 2021</div>
+        </div>
+        <div class="item-location">Srinagar, Jammu & Kashmir, India • First Class / Distinction</div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

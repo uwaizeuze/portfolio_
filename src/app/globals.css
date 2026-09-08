@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f8f9fc;
+    --foreground: #1a1a2e;
+    --accent: #0ea5e9;
+    --muted: #64748b;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --cursor-size: 12px;
+    --cursor-ring-size: 40px;
+  }
+
+  .dark {
+    --background: #050505;
+    --foreground: #f0f0f5;
+    --accent: #00f0ff;
+    --muted: #94a3b8;
+    --surface: #0a0a0a;
+    --border: #1a1a1a;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 30%, transparent);
+    color: var(--foreground);
+  }
+}
+
+/* ── Keyframes ─────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent); }
+  50% { box-shadow: 0 0 20px 4px color-mix(in srgb, var(--accent) 25%, transparent); }
+}
+
+@keyframes beam-travel {
+  0% { left: -4%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 104%; opacity: 0; }
+}
+
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal-clip {
+  from { clip-path: inset(0 100% 0 0); opacity: 0; }
+  to { clip-path: inset(0 0% 0 0); opacity: 1; }
+}
+
+@keyframes border-glow-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-24 md:py-32;
+  }
+
+  .section-container {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .glass-card {
+    @apply rounded-2xl border backdrop-blur-xl;
+    border-color: var(--border);
+    background-color: color-mix(in srgb, var(--surface) 60%, transparent);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--foreground)));
+  }
+
+  .interactive {
+    @apply cursor-none;
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
+  /* ── Skill badge shimmer on hover ── */
+  .skill-badge {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .skill-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--accent) 15%, transparent) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .skill-badge:hover::after {
+    opacity: 1;
+    animation: shimmer 1.2s ease infinite;
+  }
+
+  .skill-badge:hover {
+    border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 20%, transparent);
+    color: var(--accent);
+  }
+
+  /* ── Animated beam connector for AI flow ── */
+  .beam-dot {
+    position: absolute;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    animation: beam-travel 2.8s linear infinite;
+  }
+
+  /* ── Card with animated gradient border ── */
+  .gradient-border-card {
+    position: relative;
+    border-radius: 1rem;
+    background: var(--surface);
+  }
+
+  .gradient-border-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--accent), #6366f1, #34e89e, var(--accent));
+    background-size: 300% 300%;
+    animation: border-glow-rotate 4s ease infinite;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+  }
+
+  .gradient-border-card:hover::before {
+    opacity: 1;
+  }
+
+  /* ── Scroll reveal base state (used by GSAP) ── */
+  .gsap-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  .gsap-reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+
+  .gsap-reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+
+  /* ── Timeline connector ── */
+  .timeline-line {
+    position: absolute;
+    left: 19px;
+    top: 48px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 20%, transparent)
+    );
+  }
+
+  /* ── Skill progress bar ── */
+  .skill-bar-track {
+    height: 3px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #6366f1));
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .skill-bar-fill.animate {
+    transform: scaleX(1);
+  }
+
+  /* ── Float animation utility ── */
+  .animate-float {
+    animation: float-gentle 4s ease-in-out infinite;
+  }
+
+  /* ── Glow pulse animation ── */
+  .animate-glow-pulse {
+    animation: glow-pulse 2.5s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (pointer: coarse) {
+  .interactive {
+    cursor: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
