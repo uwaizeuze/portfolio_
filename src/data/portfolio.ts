@@ -55,11 +55,31 @@ export const categorizedSkills = {
     { name: "React Query & Context API", level: "Advanced", years: "3+ yrs" },
   ],
   aiAndAutomation: [
-    { name: "AI Integration", level: "Advanced", desc: "Embedding intelligent features into React & Next.js applications" },
-    { name: "RAG Architecture", level: "Proficient", desc: "Context grounding with vector search & document chunking" },
-    { name: "AI Agents", level: "Advanced", desc: "Autonomous planning, tool calling, and multi-step workflows" },
-    { name: "API Automation", level: "Expert", desc: "Automated REST data pipelines, template processing & webhooks" },
-    { name: "LLM Integration", level: "Advanced", desc: "Structured outputs, streaming UI responses, and prompt tuning" },
+    {
+      name: "AI Integration",
+      level: "Advanced",
+      desc: "Embedding intelligent features into React & Next.js applications",
+    },
+    {
+      name: "RAG Architecture",
+      level: "Proficient",
+      desc: "Context grounding with vector search & document chunking",
+    },
+    {
+      name: "AI Agents",
+      level: "Advanced",
+      desc: "Autonomous planning, tool calling, and multi-step workflows",
+    },
+    {
+      name: "API Automation",
+      level: "Expert",
+      desc: "Automated REST data pipelines, template processing & webhooks",
+    },
+    {
+      name: "LLM Integration",
+      level: "Advanced",
+      desc: "Structured outputs, streaming UI responses, and prompt tuning",
+    },
   ],
   backend: [
     { name: "Node.js & Express.js", level: "Advanced", years: "3+ yrs" },
@@ -154,7 +174,8 @@ export const experience = [
   {
     id: "nielit",
     role: "Software Engineer Intern (Web Developer)",
-    company: "National Institute of Electronics & Information Technology (NIELIT)",
+    company:
+      "National Institute of Electronics & Information Technology (NIELIT)",
     location: "Rangreth, Budgam, Kashmir, India",
     period: "Sep 2021 – Feb 2022",
     highlights: [
@@ -173,9 +194,13 @@ export const projects = [
     description:
       "Secure registry platform with authentication, CMS, and role-based management for securitisation asset reconstruction.",
     tags: ["React.js", "TypeScript", "REST APIs", "CMS", "RBAC"],
+
     links: [
-      { label: "Admin Panel", url: "https://admin.networkattorney.net/" },
-      { label: "UAT Admin", url: "https://adminuat.networkattorney.net/" },
+      {
+        label: "Preprod Admin",
+        url: "https://preprod-admin.niyamitnivesh.in/",
+      },
+      { label: "Preprod App", url: "https://preprod.niyamitnivesh.in/" },
     ],
     highlights: [
       "Built responsive web interfaces using React.js and TypeScript, and implemented secure authentication and authorization mechanisms.",
@@ -192,9 +217,10 @@ export const projects = [
       "AI-powered document automation system with role-based access, CMS, and intelligent campaign workflows.",
     tags: ["React.js", "TypeScript", "Zustand", "React Query", "AI"],
     links: [
-      { label: "Preprod Admin", url: "https://preprod-admin.niyamitnivesh.in/" },
-      { label: "Preprod App", url: "https://preprod.niyamitnivesh.in/" },
+      { label: "Admin Panel", url: "https://admin.networkattorney.net/" },
+      { label: "UAT Admin", url: "https://adminuat.networkattorney.net/" },
     ],
+
     highlights: [
       "Developed a responsive, dynamic frontend using React.js, TypeScript, Zustand, and React Query.",
       "Integrated role-based access management and CMS features for flexible content control.",
